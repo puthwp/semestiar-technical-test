@@ -9,7 +9,8 @@
             "gender": "male",
             "avatar": "https://xxxx.xxxx/jek.jpg",
             "created_date": "20240201T14:21:33",
-            "updated_date": "20240201T14:21:33"
+            "updated_date": "20240201T14:21:33",
+            "token": ""
         }
     ]
 }

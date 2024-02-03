@@ -12,8 +12,8 @@ function createItem(data) {
             priority: "",
             due_date: ""
         }
-        items.push(newItem)
-        helper.writeJsonFile(path, items)
+        items.items.push(newItem)
+        helper.writeJsonFile(path, rawData)
         resolve(newItem)
     })
 }
@@ -36,9 +36,9 @@ function updateItem(item, data) {
 
 function deleteItem(id) {
     return new Promise((resolve, reject) => {
-        helper.findItem(id, items)
+        helper.findItem(id, items.items)
         .then(() => {
-            updateItems = items.filter(p => p.id !== id)
+            updateItems = items.items.filter(p => p.id !== id)
             helper.writeJsonFile(path, updateItems)
             resolve()
         })

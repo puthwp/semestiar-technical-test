@@ -1,3 +1,4 @@
+const { randomUUID } = require('crypto')
 const fs = require('fs')
 
 const currentDate = () => new Date().toDateString()
@@ -13,11 +14,20 @@ function writeJsonFile(file, content) {
 }
 
 function findItem(id, items) {
-    return items.filter(item => item.id !== id)
+    return items.filter(item => item.id === id)
+}
+
+function getUserId(phone, users) {
+    const foundUser = users.filter(user => user.phone === phone)[0]
+    if (foundUser) {
+        return foundUser.user_id
+    }
+    return randomUUID()
 }
 
 module.exports = {
     currentDate,
     writeJsonFile,
-    findItem
+    findItem,
+    getUserId
 }

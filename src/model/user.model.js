@@ -1,17 +1,23 @@
 const path = '../data/users.json'
-let users = require(path)
+let rawData = require(path)
+let users = rawData.users
 
 const helper = require('../../helpers.js')
 
-function createUser() {
+function createUser(data) {
 
 }
 
-function updateUser() {
+function updateUser(data) {
 
+}
+
+function auth(phone, token){
+    return users.filter(user => user.phone === phone && user.token === md5(token))
 }
 
 module.exports = {
     createUser,
-    updateUser
+    updateUser,
+    auth
 }
