@@ -1,0 +1,16 @@
+{
+    "created": "20240201T14:21:33",
+    "updated": "20240201T14:21:33",
+    "list": [
+        {
+            "id": "ksdflldflasdfsa",
+            "title": "title of todos",
+            "status": "todo",
+            "priority": "mendatory/normal/low",
+            "due_date": "NULL",
+            "user_id": "3334445566kk",
+            "created_date": "20240201T14:21:33",
+            "updated_date": "20240201T14:21:33"
+        }
+    ]
+}
