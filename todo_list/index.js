@@ -9,8 +9,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(require('./routes/index.routes'))
 
 app.get('/',(req,res) => {
-    res.json({ mess: "Yo"})
+    res.json({ mess: "server is up and running"})
 })
 
-app.listen('1334')
+app.listen('1331')
 

@@ -1,18 +1,9 @@
 {
-    "config": {
-        "status": [
-            "TODO",
-            "DONE",
-            "UNDONE"
-        ],
-        "priority": [
-            "HIGH",
-            "NORMAL",
-            "LOW"
-        ],
-        "defualt_values": {
-            "due_date_day": 1,
-            "priority": "NORMAL"
-        }
-    }
+  "status": ["TODO", "DONE", "UNDONE"],
+  "priority": ["HIGH", "NORMAL", "LOW"],
+  "defualts": {
+    "due_date_day": 1,
+    "priority": "NORMAL",
+    "status": "TODO"
+  }
 }

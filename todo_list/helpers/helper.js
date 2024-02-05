@@ -6,7 +6,8 @@ const currentDate = () => formatISO(new Date())
 
 
 function writeJsonFile(file, content) {
-    fs.writeFileSync(file, JSON.stringify(content), 'utf-8', (e) => {
+    const path = file.replace('../','./')
+    fs.writeFileSync(path, JSON.stringify(content), 'utf-8', (e) => {
         if (e) {
             console.log("##### ERROR ######")
             console.log(e)

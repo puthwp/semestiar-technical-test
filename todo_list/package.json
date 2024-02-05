@@ -1,7 +1,7 @@
 {
-  "name": "technical-test",
+  "name": "todo_list",
   "version": "1.0.0",
-  "description": "todo list apis",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node_modules/.bin/nodemon --harmony -e js"
@@ -11,8 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "date-fns": "^3.3.1",
-    "express": "^4.18.2",
-    "uuid": "^9.0.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

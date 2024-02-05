@@ -1,6 +1,6 @@
 const path = '../data/items.json'
 let items = require(path)
-const config = '../data/config.json'
+const config = require('../data/config.json')
 const helper = require('../helpers/helper.js')
 const { randomUUID } = require('crypto')
 const { add } = require('date-fns')
@@ -10,31 +10,33 @@ const { formatISO } = require('date-fns')
 
 function createItem(data) {
     return new Promise((resolve, reject) => {
-        const { title, due_date, user_id, } = data
-        if (!title || !user_id) {
-            reject({ description: "requires title or user ID"})
-        }
-        const user_due_date = new Date(due_date)
+        const { title, due_date, user_id, priority } = data
         const newItem = {
             id: String(randomUUID()),
             title: String(title),
             user_id: String(user_id),
-            // priority: config.default_values.priority,
-            // due_date: add(new Date(), { days: config.default_values.due_date_day })
+            status: config.defualts.status,
+            priority: config.defualts.priority,
+            due_date: formatISO(add(new Date(), { days: config.defualts.due_date_day })),
+            updated_date: formatISO(new Date()),
             created_date: formatISO(new Date())
         }
-        // if (priority) {
-        //     newItem.priority = priority
-        // }
 
-        // if (user_due_date || helper.isLater(user_due_date)) {
-        //     newItem.due_date = formatISO(user_due_date)
-        // } else {
-        //     reject({ description: "due data can not be past" })
-        // }
+        if (priority) {
+            newItem.priority = priority
+        }
+
+        if (due_date) {
+            const user_due_date = new Date(due_date)
+            if (user_due_date || helper.isLater(user_due_date)) {
+                newItem.due_date = formatISO(user_due_date)
+            } else {
+                reject({ description: "due data can not be past" })
+            }
+        }
         items.push(newItem)
-        helper.writeJsonFile(path, newItem)
-        resolve(newItem)
+        helper.writeJsonFile(path, items)
+        resolve(items)
     })
 }
 
@@ -52,47 +54,47 @@ function getItems() {
 
 function updateItem(id, data) {
     return new Promise((resolve, reject) => {
-        helper.findItem(id, items)
-        .then((item) => {
-            const { status, priority, due_date } = data
-            if (status) {
-                if (!(helper.checkConfig(config.status, status))) {
-                    reject("update status not found")
+        findItem(id, items)
+            .then((item) => {
+                const { status, priority, due_date } = data
+                if (status) {
+                    if (!(checkConfig(config.status, status))) {
+                        reject("update status not found")
+                    }
+                    item.status = status
                 }
-                item.status = status
-            }
-            if (priority) {
-                if (!(helper.checkConfig(config.priority, priority))) {
-                    reject("update priority not found")
+                if (priority) {
+                    if (!(checkConfig(config.priority, priority))) {
+                        reject("update priority not found")
+                    }
+                    item.priority = priority
                 }
-                item.priority = priority
-            }
-            if (due_date) {
-                if(!(helper.isLater(new Date(due_date)))) {
-                    reject("due date is past")
+                if (due_date) {
+                    if (!(isLater(new Date(due_date)))) {
+                        reject("due date is past")
+                    }
+                    item.due_date = formatISO(new Date(due_date), { format: 'basic' })
                 }
-                item.due_date = formatISO(new Date(due_date), { format: 'basic' })
-            }
-            item.updated_date = helper.currentDate
+                item.updated_date = currentDate
 
-            updated_items = items.filter(old => old.id !== item.id)
-            items.push(item)
-            helper.writeJsonFile(path, items)
-            resolve()
-        })
-        .catch(e => reject(e))
+                updated_items = items.filter(old => old.id !== item.id)
+                items.push(item)
+                writeJsonFile(path, items)
+                resolve()
+            })
+            .catch(e => reject(e))
     })
 }
 
 function deleteItem(id) {
     return new Promise((resolve, reject) => {
-        helper.findItem(id, items)
-        .then(() => {
-            updateItems = items.filter(p => p.id !== id)
-            helper.writeJsonFile(path, updateItems)
-            resolve()
-        })
-        .catch(e => reject(e))
+        findItem(id, items)
+            .then(() => {
+                updateItems = items.filter(p => p.id !== id)
+                writeJsonFile(path, updateItems)
+                resolve()
+            })
+            .catch(e => reject(e))
     })
 }
 
