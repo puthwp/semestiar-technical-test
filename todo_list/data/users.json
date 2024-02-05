@@ -1,0 +1,22 @@
+[
+  {
+    "user_id": "33445566kk",
+    "name": "Antony",
+    "phone": "0xxxxxxxxxx",
+    "gender": "male",
+    "avatar": "https://xxxx.xxxx/jek.jpg",
+    "created_date": "20240201T14:21:33",
+    "updated_date": "20240201T14:21:33",
+    "token": ""
+  },
+  {
+    "user_id": "33445566kk2",
+    "name": "Antona",
+    "phone": "09xxxxxxxxx",
+    "gender": "female",
+    "avatar": "https://xxxx.xxxx/jek.jpg",
+    "created_date": "20240201T14:21:33",
+    "updated_date": "20240201T14:21:33",
+    "token": ""
+  }
+]

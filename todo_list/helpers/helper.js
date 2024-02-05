@@ -1,7 +1,8 @@
-const { randomUUID } = require('crypto')
 const fs = require('fs')
+const { isFuture, formatISO } = require('date-fns')
+const { randomUUID } = require('crypto')
 
-const currentDate = () => new Date().toDateString()
+const currentDate = () => formatISO(new Date())
 
 
 function writeJsonFile(file, content) {
@@ -25,9 +26,19 @@ function getUserId(phone, users) {
     return randomUUID()
 }
 
+function checkConfig(list, item) {
+    return list.some(c => c === String(item).toUpperCase())
+}
+
+function isLater(date) {
+    return isFuture(new Date(date))
+}
+
 module.exports = {
     currentDate,
     writeJsonFile,
     findItem,
-    getUserId
+    getUserId,
+    checkConfig,
+    isLater
 }

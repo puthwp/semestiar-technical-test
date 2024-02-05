@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ksdflldflasdfsa",
+    "title": "title of todos",
+    "status": "todo",
+    "priority": "mendatory/normal/low",
+    "due_date": "NULL",
+    "user_id": "3334445566kk",
+    "created_date": "20240201T14:21:33",
+    "updated_date": "20240201T14:21:33"
+  },
+  {
+    "id": "ksdflldflasdf3sa",
+    "title": "title of todos",
+    "status": "todo",
+    "priority": "mendatory/normal/low",
+    "due_date": "NULL",
+    "user_id": "3334445566kk",
+    "created_date": "20240201T14:21:33",
+    "updated_date": "20240201T14:21:33"
+  },
+  {
+    "id": "ksdflldflasdfs2a",
+    "title": "title of todos",
+    "status": "todo",
+    "priority": "mendatory/normal/low",
+    "due_date": "NULL",
+    "user_id": "3334445566kk2",
+    "created_date": "20240201T14:21:33",
+    "updated_date": "20240201T14:21:33"
+  }
+]
