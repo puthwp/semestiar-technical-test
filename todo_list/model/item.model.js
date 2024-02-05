@@ -53,7 +53,7 @@ function getItems() {
 
 function updateItem(id, data) {
     return new Promise((resolve, reject) => {
-        findItem(id, items)
+        helper.findItem(id, items)
             .then((item) => {
                 const { status, priority, due_date } = data
                 if (status) {
@@ -75,7 +75,7 @@ function updateItem(id, data) {
                     item.due_date = formatISO(new Date(due_date), { format: 'basic' })
                 }
                 item.updated_date = currentDate
-                
+
                 updated_items = items.filter(old => old.id !== item.id)
                 items.push(item)
                 writeJsonFile(path, items)
