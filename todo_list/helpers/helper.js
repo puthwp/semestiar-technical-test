@@ -1,6 +1,6 @@
 const fs = require('fs')
 const { isFuture, formatISO } = require('date-fns')
-const { randomUUID } = require('crypto')
+
 
 const currentDate = () => formatISO(new Date())
 
@@ -19,12 +19,12 @@ function findItem(id, items) {
     return items.filter(item => item.id === id)
 }
 
-function getUserId(phone, users) {
-    const foundUser = users.filter(user => user.phone === phone)[0]
-    if (foundUser) {
-        return foundUser.user_id
-    }
-    return randomUUID()
+function findUserId(user_id, users) {
+    return users.filter(u => u.user_id === user_id)
+}
+
+function findUserPhone(phone, users) {
+    return users.filter(user => user.phone === phone)
 }
 
 function checkConfig(list, item) {
@@ -39,7 +39,8 @@ module.exports = {
     currentDate,
     writeJsonFile,
     findItem,
-    getUserId,
     checkConfig,
-    isLater
+    isLater,
+    findUserPhone,
+    findUserId
 }

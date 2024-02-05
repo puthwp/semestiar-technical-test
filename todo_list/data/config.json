@@ -4,6 +4,7 @@
   "defualts": {
     "due_date_day": 1,
     "priority": "NORMAL",
-    "status": "TODO"
+    "status": "TODO",
+    "avatar": "https://gravatar.com/puthiwatp19"
   }
 }

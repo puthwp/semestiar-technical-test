@@ -3,8 +3,7 @@ let items = require(path)
 const config = require('../data/config.json')
 const helper = require('../helpers/helper.js')
 const { randomUUID } = require('crypto')
-const { add } = require('date-fns')
-const { formatISO } = require('date-fns')
+const { add, formatISO } = require('date-fns')
 
 
 
@@ -76,7 +75,7 @@ function updateItem(id, data) {
                     item.due_date = formatISO(new Date(due_date), { format: 'basic' })
                 }
                 item.updated_date = currentDate
-
+                
                 updated_items = items.filter(old => old.id !== item.id)
                 items.push(item)
                 writeJsonFile(path, items)

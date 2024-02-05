@@ -1,6 +1,5 @@
 function checkRequestNewItem(req, res, next) {
     const { title, user_id } = req.body
-    // console.log("title: " + title + "# user_id: " + user_id)
     if (title && user_id) {
         next()
     } else {
@@ -12,7 +11,7 @@ function checkRequestNewItem(req, res, next) {
 function checkToken(req, res, next) {
     const { token } = req.header.token
     if (!token) {
-        res.status(202).json({ description: "token is requires" })
+        res.status(204).json({ description: "token is requires" })
         return
     }
     next()
@@ -27,8 +26,22 @@ function checkUpdateItem(req, res, next) {
     next()
 }
 
+function chekcUserFields(req, res, next) {
+    const { name, phone } = req.body
+    if (!name || name.length === 0) {
+        res.status(202).json({ description: "user name is requires" })
+        return
+    }
+    if (!phone || phone.length !== 10) {
+        res.status(202).json({ description: "phone number is empty or incorrect" })
+        return
+    }
+    next()
+}
+
 module.exports = {
     checkRequestNewItem,
     checkToken,
-    checkUpdateItem
+    checkUpdateItem,
+    chekcUserFields
 }
